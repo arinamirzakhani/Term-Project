@@ -5,6 +5,7 @@ def loot_risk_analyzer(belt: list, hero: Hero, monster_power: str) -> list:
 
     analyzable_item_types = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots", "Flimsy Gloves"]
 
+    # Use list comprehension to filter analyzable items from the belt
     items_to_analyze = [item for item in belt if item in analyzable_item_types]
 
     if not items_to_analyze:
