@@ -5,6 +5,7 @@ import functions  # Your helper functions file
 from hero import Hero
 from monster import Monster
 from merchant import Merchant
+from loot_risk_analyzer import loot_risk_analyzer
 
 # Helper function to check health and offer potion
 def check_and_offer_potion(hero):
@@ -143,6 +144,9 @@ print(ascii_magic)
 power_roll = random.choice(["Fire Magic", "Freeze Time", "Super Hearing"])
 m_combat_strength += min(6, m_combat_strength + monster_powers[power_roll])
 print(f"🔥 The monster's combat strength is now {m_combat_strength} using {power_roll} magic power!")
+
+# --- Analyse Loot ---
+loot_risk_analyzer(hero.belt, hero, power_roll)
 
 # Battle begins
 monster = Monster("Goblin")
