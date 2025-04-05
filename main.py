@@ -2,6 +2,7 @@ import os
 import platform
 import random
 import functions  # Your helper functions file
+import Monster_Evolution  # Your monster evolution file
 from hero import Hero
 from monster import Monster
 from merchant import Merchant
@@ -150,7 +151,13 @@ loot_risk_analyzer(hero.belt, hero, power_roll)
 
 # Battle begins
 monster = Monster("Goblin")
+
+# 🧬 Evolve monster based on win streak
+consecutive_wins = functions.get_consecutive_wins()
+Monster_Evolution.evolve_monster(monster, consecutive_wins)
+
 print("\n⚔️ Battle begins!")
+
 
 while hero.health_points > 0:
     print("\n🎲 Rolling for first strike... (Press Enter)")

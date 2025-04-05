@@ -1,4 +1,6 @@
-Winner: Monster
-Hero: arm
-Stars: 1
-Monsters Killed: 55
+Winner: Hero
+Hero: chk
+Stars: 3
+Monsters Killed: 58
+Gold: 59
+Consecutive Wins: 2

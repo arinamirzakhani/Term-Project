@@ -4,17 +4,27 @@ from hero import Hero
 
 
 def save_game(winner, hero, num_stars, monsters_killed):
+    consecutive_wins = get_consecutive_wins()
+
+    if winner == "Hero":
+        consecutive_wins += 1
+    else:
+        consecutive_wins = 0
+
     with open("save.txt", "w") as file:
         file.write(f"Winner: {winner}\n")
         file.write(f"Hero: {hero.name}\n")
         file.write(f"Stars: {num_stars}\n")
         file.write(f"Monsters Killed: {monsters_killed}\n")
         file.write(f"Gold: {hero.gold}\n")
+        file.write(f"Consecutive Wins: {consecutive_wins}\n")
 
     with open("hero_save.pkl", "wb") as file:
         pickle.dump(hero, file)
 
     print("Game saved successfully!")
+    print(f"    |    You have earned {num_stars} stars!")
+    print(f"    |    You have killed {monsters_killed} monsters.")
 
 
 def load_game():
@@ -184,3 +194,15 @@ def inception_dream(num_dream_lvls):
         return 2
     else:
         return 1 + inception_dream(num_dream_lvls - 1)
+
+def get_consecutive_wins():
+    try:
+        with open("save.txt", "r") as file:
+            lines = file.readlines()
+            for line in lines:
+                if "Consecutive Wins" in line:
+                    return int(line.split(":")[1].strip())
+        return 0  # <-- If the line isn’t found
+    except (FileNotFoundError, ValueError):
+        return 0
+    # <-- If the file isn’t found or the value isn’t an integer
