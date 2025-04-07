@@ -15,7 +15,7 @@ def loot_risk_analyzer(belt: list, hero: Hero, monster_power: str) -> list:
     print(" Analyzing items in your belt:")
     for item in items_to_analyze:
         if item == "Health Potion":
-            # Nested condition based on hero's health
+            # Nested condition based on hero's health.
             if hero.health_points < 50:
                 print(f"  ✅ Health Potion: Your HP is low ({hero.health_points}). Consider using now!")
             elif hero.health_points == 100:
